@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Shared Preferences Android</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="logout">Logout</string>
+    <string name="welcome_dashboard">Welcome to Dashboard</string>
+</resources>
