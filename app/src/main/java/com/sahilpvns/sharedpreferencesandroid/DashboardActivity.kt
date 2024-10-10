@@ -10,16 +10,20 @@ import com.sahilpvns.sharedpreferencesandroid.databinding.ActivityDashboardBindi
 
 class DashboardActivity : AppCompatActivity() {
 
-    private var binding: ActivityDashboardBinding? = null
+    private lateinit var binding: ActivityDashboardBinding
     private lateinit var sharedPref: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_dashboard)
+        binding = ActivityDashboardBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         sharedPref = getSharedPreferences("MyPref", MODE_PRIVATE)
+        val username = sharedPref.getString("username", "")
 
-        binding?.logoutButton?.setOnClickListener {
+        binding.tvUserName.text = username
+
+        binding.logoutButton.setOnClickListener {
             val editor = sharedPref.edit()
             editor.putBoolean("isLoggedIn", false)
             editor.apply()

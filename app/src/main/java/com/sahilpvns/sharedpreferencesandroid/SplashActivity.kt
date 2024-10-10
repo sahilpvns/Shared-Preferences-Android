@@ -10,15 +10,14 @@ import com.sahilpvns.sharedpreferencesandroid.databinding.ActivitySplashBinding
 
 class SplashActivity : AppCompatActivity() {
 
-    private var binding: ActivitySplashBinding? = null
+    private lateinit var binding: ActivitySplashBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_splash)
-
+        binding = ActivitySplashBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         Handler(Looper.getMainLooper()).postDelayed({
-
             val sharedPref = getSharedPreferences("MyPref", MODE_PRIVATE)
             val isLoggedIn = sharedPref.getBoolean("isLoggedIn", false)
 
