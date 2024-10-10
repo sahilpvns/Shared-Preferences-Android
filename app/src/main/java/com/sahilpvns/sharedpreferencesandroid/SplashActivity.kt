@@ -17,8 +17,9 @@ class SplashActivity : AppCompatActivity() {
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val sharedPref = getSharedPreferences("MyPref", MODE_PRIVATE)
+
         Handler(Looper.getMainLooper()).postDelayed({
-            val sharedPref = getSharedPreferences("MyPref", MODE_PRIVATE)
             val isLoggedIn = sharedPref.getBoolean("isLoggedIn", false)
 
             if (isLoggedIn) {
