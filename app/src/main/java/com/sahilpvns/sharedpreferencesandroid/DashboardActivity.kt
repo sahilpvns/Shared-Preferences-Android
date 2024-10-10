@@ -24,9 +24,10 @@ class DashboardActivity : AppCompatActivity() {
         binding.tvUserName.text = username
 
         binding.logoutButton.setOnClickListener {
-            val editor = sharedPref.edit()
-            editor.putBoolean("isLoggedIn", false)
-            editor.apply()
+            sharedPref.edit().apply {
+                putBoolean("isLoggedIn", false)
+                apply()
+            }
 
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
